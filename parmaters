@@ -1,0 +1,23 @@
+pipeline{
+   agent any
+   parameters{
+      string(name: 'PERSON', defaultValue: 'krishna' , description: 'hello person')
+      test(name: 'BIOGRAPHY', defaultValue: '' , description: 'Enter something about person')
+      booleanparam(name: 'TOGGLE', defaultValue: 'true' , description: 'toggle this value')
+      choice(name: 'CHOICE', choice: ['one','two','three'] , description: 'pick option')
+      password(name: 'PASSWORD', defaultValue: 'secret' , description: 'Enter a password')
+      file(name: 'FILE' , description: 'File to ne uploaded')
+  }
+  stages{
+    stage('Build'){
+      steps{
+        echo "hello $(params.PERSON)"
+        echo "Biography: $(params.BIOGRAPHY)"
+        echo "Toggle: $(params.TOGGLE)"
+        echo "Choice: $(params.CHOICE)"
+        echo "Password: $(params.PASSWORD)"
+      }
+    }
+  }
+}
+
